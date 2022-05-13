@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <img id="img-container" src="#" width="500" height="500">
+        <input id="base64-string" type="text" style="display: none;">
+        <input id="base64-string-origin" type="text" style="display: none;">
+    </div>
+    <div>
+        <input type="file" name="filename" accept="image/jpeg, image/png" onchange="readURL(this);">
+    </div>
+    <div>
+        <button onclick="origin()">Origin</button>
+    </div>
+    <hr/>
+    <div class="negative-container">
+        <h2>Negative</h2>
+        <div>
+            <button id="submit" onclick="negative();">Apply</button>
+        </div>
+    </div>
+    <hr/>
+    <div class="log-transformation-container">
+        <h2>Log Transformation</h2>
+        <div>
+            <label for="log-transformation-c">c: </label>
+            <input type="range" value="0" id="log-transformation-c" name="log-transformation-c" min="1" max="50" onchange="showLogTransformationCValue()">
+            <label class="log-transformation-c-label">1</label>
+        </div>
+        <div>
+            <button id="submit" onclick="logTransformation();">Apply</button>
+        </div>
+    </div>
+    <hr/>
+    <div class="smoothing-container">
+        <h2>Smoothing</h2>
+        <div class="smoothing-gaussian-container">
+            <h4>Smoothing: Gaussian</h4>
+            <div>
+                <label for="smoothing-gaussian-kernel">Gaussian kernel: </label>
+                <input type="range" value="0" id="smoothing-gaussian-kernel" name="smoothing-gaussian-kernel" min="1" max="30" onchange="showGaussianKernelValue('smoothing')">
+                <label class="smoothing-gaussian-kernel-label">1</label>
+            </div>
+            <div>
+                <label for="smoothing-gaussian-threshold">Threshold: </label>
+                <input type="number" value="0" id="smoothing-gaussian-threshold" name="smoothing-gaussian-threshold">
+            </div>
+            <div>
+                <button id="submit" onclick="gaussian('smoothing');">Apply</button>
+            </div>
+        </div>
+        <hr/>
+        <div class="smoothing-median-container">
+            <div class="smoothing-median-container">
+                <h4>Smoothing: Median</h4>
+                <div>
+                    <label for="smoothing-median-kernel">Median kernel: </label>
+                    <input type="range" value="0" id="smoothing-median-kernel" name="smoothing-median-kernel" min="1" max="30" onchange="showMedianKernelValue('smoothing')">
+                    <label class="smoothing-median-kernel-label">1</label>
+                </div>
+                <div>
+                    <button id="submit" onclick="median('smoothing');">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="sharpening-container">
+        <h2>Sharpening</h2>
+        <div class="sharpening-gaussian-container">
+            <h4>Sharpening: Gaussian</h4>
+            <div>
+                <label for="sharpening-gaussian-kernel">Gaussian kernel: </label>
+                <input type="range" value="0" id="sharpening-gaussian-kernel" name="sharpening-gaussian-kernel" min="1" max="30" onchange="showGaussianKernelValue('sharpening')">
+                <label class="sharpening-gaussian-kernel-label">1</label>
+            </div>
+            <div>
+                <label for="sharpening-gaussian-threshold">Threshold: </label>
+                <input type="number" value="0" id="sharpening-gaussian-threshold" name="sharpening-gaussian-threshold">
+            </div>
+            <div>
+                <button id="submit" onclick="gaussian('sharpening');">Apply</button>
+            </div>
+        </div>
+        <hr/>
+        <div class="sharpening-median-container">
+            <div class="sharpening-median-container">
+                <h4>Sharpening: Median</h4>
+                <div>
+                    <label for="sharpening-median-kernel">Median kernel: </label>
+                    <input type="range" value="0" id="sharpening-median-kernel" name="sharpening-median-kernel" min="1" max="30" onchange="showMedianKernelValue('sharpening')">
+                    <label class="sharpening-median-kernel-label">1</label>
+                </div>
+                <div>
+                    <button id="submit" onclick="median('sharpening');">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="main.js"></script>
+
+</html>
